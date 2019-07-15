@@ -1,0 +1,7 @@
+keras
+jupyter
+matplotlib
+pillow
+numpy
+scipy
+sklearn
