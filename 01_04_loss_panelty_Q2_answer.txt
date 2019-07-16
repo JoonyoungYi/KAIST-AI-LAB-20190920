@@ -1,0 +1,1 @@
+regularization_loss = tf.add_n([tf.reduce_sum(tf.math.abs(w)) for w in weights])

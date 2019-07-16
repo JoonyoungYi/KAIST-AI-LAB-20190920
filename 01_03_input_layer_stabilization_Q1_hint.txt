@@ -1,0 +1,6 @@
+아래 코드만을 수정하시면 됩니다. 
+
+mean, std = np.mean(x_train), np.std(x_train)
+x_train = (x_train.astype(np.float64)- mean) / std
+x_valid = (x_valid.astype(np.float64)- mean) / std
+x_test = (x_test.astype(np.float64) - mean) / std

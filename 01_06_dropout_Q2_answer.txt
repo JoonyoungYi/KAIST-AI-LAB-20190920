@@ -1,0 +1,1 @@
+layer = tf.cond(training, lambda: tf.nn.dropout(layer, keep_prob=0.5), lambda: layer)

@@ -1,0 +1,1 @@
+layer = tf.keras.layers.GaussianDropout(rate=0.5)(layer, training=training)
