@@ -1,6 +1,6 @@
 # KAIST-AI-LAB-20190716
 
-## 1. 실습 시작하기
+## 실습 시작하기
 
 1. 현재 git repository를 clone하고 해당 폴더로 이동합니다.
 ```
@@ -14,7 +14,4 @@ pip3 install -r requirements.txt
 ```
 jupyter notebook
 ```
-4. 실습 파일로 이동합니다.
-
-
-## 2. 
+4. 첫번째 실습 파일(01_01_without_regularization)로 이동합니다.
