@@ -1,0 +1,45 @@
+0201
+
+1)
+batch_size=1024 # an integer number between 1 and 60,000(train data size)
+2)
+optimizer = tf.train.AdamOptimizer(learning_rate) # or any optimizer
+3)
+optimizers={'sgd': tf.train.GradientDescentOptimizer(learning_rate), 'sgd w/ nesterov': tf.train.MomentumOptimizer(learning_rate, momentum=0.3 ,use_nesterov=True), 'adagrad': tf.train.AdagradOptimizer(learning_rate), 'rmsprop': tf.train.RMSPropOptimizer(learning_rate), 'adam': tf.train.AdamOptimizer(learning_rate)}
+train_loss_histories = []
+train_acc_histories = []
+test_acc_histories = []
+for opt_name in optimizers:
+    optimizer = optimizers[opt_name]
+    
+    train_loss_history = []
+    train_acc_history = []
+    test_acc_history = []
+    
+    start_time = time()
+    
+    for epoch in range(epochs):
+        for (idx, (images, labels)) in enumerate(train_dataset.take(iterations)):
+            # gradient를 계산하고 optimizer를 이용해 back propagation을 수행합니다.
+            grads = grad(model, images, labels)
+            optimizer.apply_gradients(grads_and_vars=zip(grads, model.variables), global_step=tf.train.get_or_create_global_step())
+
+            # performance를 계산합니다
+            train_loss = loss_fn(model, images, labels)
+            train_accuracy = accuracy_fn(model, images, labels)
+            test_accuracy = accuracy_fn(model, x_test, y_test)
+
+            # 그래프를 그리기 위해 기록합니다.
+            train_loss_history.append(train_loss.numpy())
+            train_acc_history.append(train_accuracy.numpy())
+            test_acc_history.append(test_accuracy.numpy())
+
+            # 학습 과정을 출력합니다.
+            if idx % 20 == 0 or idx == iterations - 1:
+                print("Epoch: [%2d] [%5d/%5d] time: %4.4f, train_loss: %.8f, train_accuracy: %.4f, test_Accuracy: %.4f" \
+                    % (epoch + 1, idx + 1, iterations, time() - start_time, train_loss, train_accuracy,
+                       test_accuracy))
+    train_loss_histories.append(train_loss_history)
+    train_acc_histories.append(train_acc_history)
+    test_acc_histories.append(test_acc_history)
+plot_fn([key for key in optimizers], train_loss_histories, train_acc_histories, test_acc_histories)
