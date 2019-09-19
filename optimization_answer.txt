@@ -10,6 +10,8 @@ train_loss_histories = []
 train_acc_histories = []
 test_acc_histories = []
 for opt_name in optimizers:
+    del model
+    model = Model(n_in, n_out, n_hidden_unit, n_hidden_layer)
     optimizer = optimizers[opt_name]
 
     train_loss_history = []
