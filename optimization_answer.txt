@@ -11,13 +11,13 @@ train_acc_histories = []
 test_acc_histories = []
 for opt_name in optimizers:
     optimizer = optimizers[opt_name]
-    
+
     train_loss_history = []
     train_acc_history = []
     test_acc_history = []
-    
+
     start_time = time()
-    
+
     for epoch in range(epochs):
         for (idx, (images, labels)) in enumerate(train_dataset.take(iterations)):
             # gradient를 계산하고 optimizer를 이용해 back propagation을 수행합니다.
