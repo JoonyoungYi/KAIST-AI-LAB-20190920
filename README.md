@@ -24,3 +24,6 @@ jupyter notebook
 3. 실습할 파일을 선택합니다.
 4. (optional) `드라이브로 복사`를 클릭한 후 본인 계정의 구글 드라이브에 코드를 복사하여 실행합니다.
 5. 다른 실습 파일로 넘어가기 위해서는 좌측 상단의 `파일`->`노트 열기...`를 누르거나 `Ctrl+o`를 입력합니다.
+
+## Assignment
+- [과제 링크](https://github.com/hankook/Samsung-AI-KAIST/tree/master/190920_RegOpt)
